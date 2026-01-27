@@ -23,4 +23,24 @@ public class Book {
         this.genre = genre;
         this.available = true; // By default, the book is available
     }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
 }
