@@ -56,4 +56,13 @@ public class LibraryUser {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    @Override
+    public String toString() {
+        return "LibraryUser{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", role=" + role +
+                '}';
+    }
 }
