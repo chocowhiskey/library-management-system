@@ -7,10 +7,10 @@ public interface BookRepository {
 
     void save(Book book);
 
+    void deleteByIsbn(String isbn);
+
     Book findByIsbn(String isbn);
 
     List<Book> findAll();
-
-    void deleteByIsbn(String isbn);
 
 }
