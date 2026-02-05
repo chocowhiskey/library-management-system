@@ -102,6 +102,41 @@ public class LibraryApplication {
         System.out.println("  Loan active: " + loan1.isActive());
         System.out.println("  Return date: " + loan1.getReturnDate());
         System.out.println();
+
+        // 9. Suche nach Büchern
+        System.out.println("--- Searching Books ---");
+        var javaBooks = bookService.searchByTitle("java");
+        System.out.println("Search 'java' found " + javaBooks.size() + " books:");
+        javaBooks.forEach(book -> System.out.println("  - " + book.getTitle()));
+        System.out.println();
+
+        var programmingBooks = bookService.searchByGenre("programming");
+        System.out.println("Genre 'programming' found " + programmingBooks.size() + " books:");
+        programmingBooks.forEach(book -> System.out.println("  - " + book.getTitle() + " by " + book.getAuthor()));
+        System.out.println();
+
+        // 10. Loans eines Users anzeigen
+        System.out.println("--- User Loans Overview ---");
+        var member2Loans = loanService.getLoansByUser(member2.getId());
+        System.out.println(member2.getName() + " has " + member2Loans.size() + " loan(s):");
+        member2Loans.forEach(loan -> {
+            System.out.println("  - " + loan.getBook().getTitle());
+            System.out.println("    Borrowed: " + loan.getLoanDate());
+            System.out.println("    Status: " + (loan.isActive() ? "Active" : "Returned"));
+        });
+        System.out.println();
+
+        // 11. Alle Bücher im System
+        System.out.println("--- All Books in Library ---");
+        var allBooks = bookService.getAllBooks();
+        System.out.println("Total books: " + allBooks.size());
+        allBooks.forEach(book -> {
+            System.out.println("  [" + (book.isAvailable() ? "AVAILABLE" : "BORROWED") + "] "
+                    + book.getTitle() + " - " + book.getAuthor());
+        });
+        System.out.println();
+
+        System.out.println("=== Demo completed successfully! ===");
     }
 
 }

@@ -44,4 +44,8 @@ public class LoanService {
         activeLoan.get().returnDate(LocalDate.now());
     }
 
+    public List<Loan> getLoansByUser(String userId) {
+        return loanRepository.findByUserId(userId);
+    }
+
 }
